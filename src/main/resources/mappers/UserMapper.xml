@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="by.vsu.dao.UserDao">
+    <resultMap id="userResult" type="User">
+        <id property="id" column="id"/>
+        <result property="login" column="login"/>
+        <result property="password" column="password"/>
+        <result property="role" column="role" javaType="by.vsu.model.UserRole"/>
+        <result property="status" column="status" javaType="by.vsu.model.UserStatus"/>
+    </resultMap>
+    
+    <select id="findAll" resultMap="userResult">
+        SELECT id, login, password, role, status
+        FROM users;
+    </select>
+
+</mapper>

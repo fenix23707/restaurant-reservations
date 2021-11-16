@@ -13,6 +13,16 @@ public class User {
 
     private UserStatus status;
 
+    public User() {    }
+
+    public User(Integer id, String login, String password, UserRole role, UserStatus status) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.status = status;
+    }
+
     public Integer getId() {
         return id;
     }

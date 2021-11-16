@@ -15,6 +15,13 @@ public class User {
 
     public User() {    }
 
+    public User(String login, String password, UserRole role, UserStatus status) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.status = status;
+    }
+
     public User(Integer id, String login, String password, UserRole role, UserStatus status) {
         this.id = id;
         this.login = login;

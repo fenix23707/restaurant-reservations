@@ -20,8 +20,8 @@ public class UserController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-
     public @ResponseBody List<User> users() {
         return userService.findAll();
     }
+
 }

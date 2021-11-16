@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 @EnableWebMvc
 @ComponentScan("by.vsu.controller")
 public class WebConfig implements WebMvcConfigurer {
-    @Override
+    /*@Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
     }
@@ -25,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
         ContentNegotiatingViewResolver cnvr = new ContentNegotiatingViewResolver();
         cnvr.setContentNegotiationManager(cnm);
         return cnvr;
-    }
+    }*/
 
 
 }

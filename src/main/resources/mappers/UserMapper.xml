@@ -4,17 +4,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="by.vsu.dao.UserDao">
-    <resultMap id="userResult" type="User">
+    <resultMap id="userResultMap" type="User">
         <id property="id" column="id"/>
         <result property="login" column="login"/>
         <result property="password" column="password"/>
         <result property="role" column="role" javaType="by.vsu.model.UserRole"/>
         <result property="status" column="status" javaType="by.vsu.model.UserStatus"/>
     </resultMap>
-    
-    <select id="findAll" resultMap="userResult">
+
+    <select id="findAll" resultMap="userResultMap">
         SELECT id, login, password, role, status
         FROM users;
     </select>
+
+    <select id="findById"
+            resultMap="userResultMap"
+            parameterType="Integer">
+        SELECT id, login, password, role, status
+        FROM users
+        WHERE id = #{id}
+    </select>
+
+    <insert id="create"
+            parameterType="User"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO users (login, password, role, status)
+        VALUES (#{login}, #{password}, #{role}, #{status});
+    </insert>
+
+    <update id="update"
+            parameterType="User">
+        UPDATE users
+        SET login = #{login}, password = #{password}, role = #{role}, status = #{status}
+        WHERE id = #{id};
+    </update>
 
 </mapper>

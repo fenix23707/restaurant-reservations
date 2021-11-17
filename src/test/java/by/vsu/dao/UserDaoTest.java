@@ -26,13 +26,26 @@ public class UserDaoTest {
 
     @Test
     public void findAllCountTest() {
-        List<User> users = userDao.findAll();
+        List<User> users = userDao.findAll(100, 0);
         assertEquals(10, users.size());
     }
 
     @Test
+    public void findAllSkipTest() {
+        List<User> users = userDao.findAll(10, 5);
+        assertEquals(5, users.size());
+    }
+
+    @Test
+    public void findAllSizeTest() {
+        int pageSize = 1;
+        List<User> users = userDao.findAll(pageSize,0);
+        assertEquals(pageSize, users.size());
+    }
+
+    @Test
     public void findAllNotNullValuesTest() {
-        List<User> users = userDao.findAll();
+        List<User> users = userDao.findAll(10, 0);
         assertTrue(users.stream().allMatch(user -> user != null));
     }
 
@@ -70,10 +83,10 @@ public class UserDaoTest {
     @Test
     @Transactional
     public void createChangeCountTest() {
-        int startSize = userDao.findAll().size();
+        int startSize = userDao.findAll(10, 0).size();
         User user = new User("login", "password", UserRole.ADMIN, UserStatus.ACTIVE);
         userDao.create(user);
-        int endSize = userDao.findAll().size();
+        int endSize = userDao.findAll(11, 0).size();
         assertEquals(startSize + 1, endSize);
     }
 
@@ -96,5 +109,22 @@ public class UserDaoTest {
         assertEquals(newPassword, newUser.getPassword());
         assertEquals(newRole, newUser.getRole());
         assertEquals(newStatus, newUser.getStatus());
+    }
+
+    @Test
+    @Transactional
+    public void deleteChangeCountTest() {
+        int startCount = userDao.findAll(100, 0).size();
+        int count = userDao.delete(10);
+        int endCount = userDao.findAll(101, 0).size();
+        assertEquals(startCount - 1 , endCount);
+        assertEquals(1, count);
+    }
+
+    @Test
+    @Transactional
+    public void deleteZeroTest() {
+        int count = userDao.delete(100);
+        assertEquals(0, count);
     }
 }

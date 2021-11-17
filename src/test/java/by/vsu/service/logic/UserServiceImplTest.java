@@ -1,5 +1,6 @@
 package by.vsu.service.logic;
 
+import by.vsu.config.AppConfig;
 import by.vsu.dao.UserDao;
 import by.vsu.model.User;
 import by.vsu.model.UserRole;
@@ -12,12 +13,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTest {
@@ -33,7 +38,17 @@ public class UserServiceImplTest {
         this.users = Arrays.asList(
                 new User(1, "login1", "password1", UserRole.ADMIN, UserStatus.ACTIVE),
                 new User(2, "login2", "password2", UserRole.MANAGER, UserStatus.INACTIVE),
-                new User(3, "login3", "password3", UserRole.VISITOR, UserStatus.ACTIVE)
+
+                new User(3, "login3", "password3", UserRole.VISITOR, UserStatus.ACTIVE),
+                new User(4, "login4", "password4", UserRole.VISITOR, UserStatus.ACTIVE),
+
+                new User(5, "login5", "password5", UserRole.VISITOR, UserStatus.ACTIVE),
+                new User(6, "login6", "password6", UserRole.ADMIN, UserStatus.ACTIVE),
+
+                new User(7, "login7", "password7", UserRole.VISITOR, UserStatus.ACTIVE),
+                new User(8, "login8", "password8", UserRole.MANAGER, UserStatus.ACTIVE),
+                new User(9, "login9", "password9", UserRole.MANAGER, UserStatus.ACTIVE),
+                new User(10, "login10", "password10", UserRole.MANAGER, UserStatus.ACTIVE)
         );
     }
 
@@ -43,10 +58,60 @@ public class UserServiceImplTest {
     }
 
     @Test
-    public void findAllTest() {
-        when(userDao.findAll()).thenReturn(users);
-
-        List<User> actual = userService.findAll();
+    public void getAllTest() {
+        when(userDao.findAll(users.size(), 0)).thenReturn(users);
+        List<User> actual = userService.getUsers(users.size(), 0);
         assertEquals(users, actual);
+    }
+
+    @Test
+    public void getAllPageSizePageNumTest() {
+        int pageSize = 2;
+        int pageNum = 2;
+        List<User> subUsers = users.subList(4, 6);
+        when(userDao.findAll(pageSize, pageNum * pageNum)).thenReturn(subUsers);
+
+        List<User> actual = userService.getUsers(pageSize, pageNum);
+        assertEquals(subUsers, actual);
+    }
+
+
+    @Test
+    public void getUserByIdTest() {
+        Integer id = 1;
+        when(userDao.findById(id)).thenReturn(users.get(0));
+
+        User user = userService.getUserById(id);
+        assertEquals(users.get(0), user);
+    }
+
+    @Test
+    public void saveNewObjectTest() {
+        User user = new User("newL", "newP", UserRole.ADMIN, UserStatus.ACTIVE);
+        Integer id = 11;
+
+        doAnswer(invocation -> {
+            User u = invocation.getArgument(0);
+            u.setId(id);
+            return null;
+        }).when(userDao).create(user);
+
+        User u = userService.save(user);
+
+        assertEquals(id, u.getId());
+    }
+
+    @Test
+    public void deleteSuccessfulTest() {
+        when(userDao.delete(anyInt())).thenReturn(1);
+        boolean result = userService.delete(10);
+        assertTrue(result);
+    }
+
+    @Test
+    public void deleteZeroTest() {
+        when(userDao.delete(anyInt())).thenReturn(0);
+        boolean result = userService.delete(10);
+        assertFalse(result);
     }
 }

@@ -146,12 +146,12 @@ INSERT INTO book_tables (datetime_begin, datetime_end, capacity, status, table_i
 ('2021-09-08T10:00:00Z', '2021-09-08T12:00:00Z', 2, 0, 1, 7),
 ('2021-09-08T12:00:00Z', '2021-09-08T14:00:00Z', 2, 0, 1, 8),
 ('2021-09-08T14:00:00Z', '2021-09-08T16:00:00Z', 2, 0, 1, 9),
-('2021-09-08T16:00:00Z', '2021-09-08T18:00:00Z', 2, 0, 1, 10);
+('2021-09-08T16:00:00Z', '2021-09-08T18:00:00Z', 2, 0, 1, 9);
 
 INSERT INTO reviews (rate, review, date, user_id, restaurant_id) VALUES 
 (1, 'Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo.', '2020-11-26T19:06:44Z', 6, 1),
 (2, 'Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', '2021-03-23T08:25:39Z', 7, 2),
 (3, null, '2020-10-12T15:13:07Z', 8, 3),
 (4, 'Vivamus tortor. Duis mattis egestas metus. Aenean fermentum.', '2021-04-16T21:55:38Z', 9, 4),
-(5, 'Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', '2021-05-06T11:17:47Z', 10, 5);
+(5, 'Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', '2021-05-06T11:17:47Z', 9, 5);
 

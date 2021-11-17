@@ -12,9 +12,13 @@
         <result property="status" column="status" javaType="by.vsu.model.UserStatus"/>
     </resultMap>
 
-    <select id="findAll" resultMap="userResultMap">
+    <select id="findAll"
+            resultMap="userResultMap"
+            parameterType="Integer"
+    >
         SELECT id, login, password, role, status
-        FROM users;
+        FROM users
+        LIMIT #{limit} OFFSET #{skip};
     </select>
 
     <select id="findById"
@@ -36,8 +40,18 @@
     <update id="update"
             parameterType="User">
         UPDATE users
-        SET login = #{login}, password = #{password}, role = #{role}, status = #{status}
+        SET login    = #{login},
+            password = #{password},
+            role     = #{role},
+            status   = #{status}
         WHERE id = #{id};
     </update>
+
+    <delete id="delete"
+            parameterType="Integer">
+        DELETE
+        FROM users
+        WHERE id = #{id};
+    </delete>
 
 </mapper>

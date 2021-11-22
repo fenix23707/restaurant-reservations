@@ -26,7 +26,6 @@ public class UserInfoServiceImplTest {
 
     @InjectMocks
     private UserInfoServiceImpl userInfoService;
-    private UserInfo userInfo;
 
     @Before
     public void setUp() throws Exception {

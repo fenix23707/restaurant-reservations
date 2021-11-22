@@ -6,6 +6,7 @@
 <configuration>
     <typeAliases>
         <typeAlias type="by.vsu.model.User" alias="User"/>
+        <typeAlias type="by.vsu.model.UserInfo" alias="UserInfo"/>
         <typeAlias type="by.vsu.model.Restaurant" alias="Restaurant"/>
     </typeAliases>
 
@@ -19,5 +20,6 @@
     <mappers>
         <mapper resource="mappers/UserMapper.xml"/>
         <mapper resource="mappers/RestaurantMapper.xml"/>
+        <mapper resource="mappers/UserInfoMapper.xml"/>
     </mappers>
 </configuration>

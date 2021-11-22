@@ -5,24 +5,25 @@ import java.util.Objects;
 public class User {
     private Integer id;
 
+    /** User login. Should be unique. */
     private String login;
 
     private String password;
 
-    private UserRole role;
+    private Role role;
 
-    private UserStatus status;
+    private Status status;
 
     public User() {    }
 
-    public User(String login, String password, UserRole role, UserStatus status) {
+    public User(String login, String password, Role role, Status status) {
         this.login = login;
         this.password = password;
         this.role = role;
         this.status = status;
     }
 
-    public User(Integer id, String login, String password, UserRole role, UserStatus status) {
+    public User(Integer id, String login, String password, Role role, Status status) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -54,19 +55,19 @@ public class User {
         this.password = password;
     }
 
-    public UserRole getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    public UserStatus getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(UserStatus status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -92,5 +93,13 @@ public class User {
                 ", role=" + role +
                 ", status=" + status +
                 '}';
+    }
+
+    public enum Role {
+        VISITOR, ADMIN, MANAGER
+    }
+
+    public enum Status {
+        ACTIVE, INACTIVE
     }
 }

@@ -1,11 +1,7 @@
 package by.vsu.service.logic;
 
-import by.vsu.config.AppConfig;
 import by.vsu.dao.UserDao;
 import by.vsu.model.User;
-import by.vsu.model.UserRole;
-import by.vsu.model.UserStatus;
-import by.vsu.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,19 +30,19 @@ public class UserServiceImplTest {
 
     public UserServiceImplTest() {
         this.users = Arrays.asList(
-                new User(1, "login1", "password1", UserRole.ADMIN, UserStatus.ACTIVE),
-                new User(2, "login2", "password2", UserRole.MANAGER, UserStatus.INACTIVE),
+                new User(1, "login1", "password1", User.Role.ADMIN, User.Status.ACTIVE),
+                new User(2, "login2", "password2", User.Role.MANAGER, User.Status.INACTIVE),
 
-                new User(3, "login3", "password3", UserRole.VISITOR, UserStatus.ACTIVE),
-                new User(4, "login4", "password4", UserRole.VISITOR, UserStatus.ACTIVE),
+                new User(3, "login3", "password3", User.Role.VISITOR, User.Status.ACTIVE),
+                new User(4, "login4", "password4", User.Role.VISITOR, User.Status.ACTIVE),
 
-                new User(5, "login5", "password5", UserRole.VISITOR, UserStatus.ACTIVE),
-                new User(6, "login6", "password6", UserRole.ADMIN, UserStatus.ACTIVE),
+                new User(5, "login5", "password5", User.Role.VISITOR, User.Status.ACTIVE),
+                new User(6, "login6", "password6", User.Role.ADMIN, User.Status.ACTIVE),
 
-                new User(7, "login7", "password7", UserRole.VISITOR, UserStatus.ACTIVE),
-                new User(8, "login8", "password8", UserRole.MANAGER, UserStatus.ACTIVE),
-                new User(9, "login9", "password9", UserRole.MANAGER, UserStatus.ACTIVE),
-                new User(10, "login10", "password10", UserRole.MANAGER, UserStatus.ACTIVE)
+                new User(7, "login7", "password7", User.Role.VISITOR, User.Status.ACTIVE),
+                new User(8, "login8", "password8", User.Role.MANAGER, User.Status.ACTIVE),
+                new User(9, "login9", "password9", User.Role.MANAGER, User.Status.ACTIVE),
+                new User(10, "login10", "password10", User.Role.MANAGER, User.Status.ACTIVE)
         );
     }
 
@@ -87,7 +81,7 @@ public class UserServiceImplTest {
 
     @Test
     public void saveNewObjectTest() {
-        User user = new User("newL", "newP", UserRole.ADMIN, UserStatus.ACTIVE);
+        User user = new User("newL", "newP", User.Role.ADMIN, User.Status.ACTIVE);
         Integer id = 11;
 
         doAnswer(invocation -> {

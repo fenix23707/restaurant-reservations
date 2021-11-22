@@ -8,8 +8,8 @@
         <id property="id" column="id"/>
         <result property="login" column="login"/>
         <result property="password" column="password"/>
-        <result property="role" column="role" javaType="by.vsu.model.UserRole"/>
-        <result property="status" column="status" javaType="by.vsu.model.UserStatus"/>
+        <result property="role" column="role" javaType="by.vsu.model.User$Role"/>
+        <result property="status" column="status" javaType="by.vsu.model.User$Status"/>
     </resultMap>
 
     <select id="findAll"

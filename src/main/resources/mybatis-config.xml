@@ -11,9 +11,9 @@
 
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
-                     javaType="by.vsu.model.UserRole"/>
+                     javaType="by.vsu.model.User$Role"/>
         <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
-                     javaType="by.vsu.model.UserStatus"/>
+                     javaType="by.vsu.model.User$Status"/>
     </typeHandlers>
     
     <mappers>

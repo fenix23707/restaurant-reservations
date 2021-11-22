@@ -5,6 +5,7 @@
 
 <mapper namespace="by.vsu.dao.RestaurantDao">
     <resultMap id="restaurantResultMap" type="Restaurant" autoMapping="true">
+        <result property="address" column="adres"/>
         <result property="user.id" column="user_id"/>
     </resultMap>
 </mapper>

@@ -123,7 +123,7 @@ INSERT INTO user_info (name, birthday, phone, avatar, email, user_id) VALUES
 INSERT INTO restaurants (name, avatar, adres, user_id) VALUES 
 ('Kare', 'Convallis.jpeg', '120 Autumn Leaf Center', 1),
 ('Gabcube', 'Aliquam.txt', '6 Boyd Terrace', 2),
-('Wikivu', 'Dis.xls', '943 Moose Point', 3),
+('Wikivu', 'Dis.xls', '943 Moose Position', 3),
 ('Kazu', null, '92605 Darwin Junction', 4),
 ('Zazio', null, '62 Express Terrace', 5);
 

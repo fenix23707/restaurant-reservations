@@ -39,7 +39,7 @@ public class RestaurantDaoTest {
     public void findByIdFieldsNotNullTest() {
         Restaurant restaurant = restaurantDao.findById(1);
         assertNotNull(restaurant.getId());
-        assertNotNull(restaurant.getAdres());
+        assertNotNull(restaurant.getAddress());
         assertNotNull(restaurant.getAvatar());
         assertNotNull(restaurant.getName());
         assertNotNull(restaurant.getUser());

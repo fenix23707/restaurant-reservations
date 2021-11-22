@@ -1,8 +1,6 @@
 package by.vsu.dao;
 
 import by.vsu.model.User;
-import by.vsu.model.UserRole;
-import by.vsu.model.UserStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +73,7 @@ public class UserDaoTest {
     @Test
     @Transactional
     public void createKeyGeneratesTest() {
-        User user = new User("login", "password", UserRole.ADMIN, UserStatus.ACTIVE);
+        User user = new User("login", "password", User.Role.ADMIN, User.Status.ACTIVE);
         userDao.create(user);
         assertNotNull(user.getId());
     }
@@ -84,7 +82,7 @@ public class UserDaoTest {
     @Transactional
     public void createChangeCountTest() {
         int startSize = userDao.findAll(10, 0).size();
-        User user = new User("login", "password", UserRole.ADMIN, UserStatus.ACTIVE);
+        User user = new User("login", "password", User.Role.ADMIN, User.Status.ACTIVE);
         userDao.create(user);
         int endSize = userDao.findAll(11, 0).size();
         assertEquals(startSize + 1, endSize);
@@ -97,8 +95,8 @@ public class UserDaoTest {
         Integer id = 1;
         String newLogin = "l";
         String newPassword = "p";
-        UserRole newRole = UserRole.ADMIN;
-        UserStatus newStatus = UserStatus.INACTIVE;
+        User.Role newRole = User.Role.ADMIN;
+        User.Status newStatus = User.Status.INACTIVE;
         User user = new User(id, newLogin, newPassword, newRole, newStatus);
 
         userDao.update(user);

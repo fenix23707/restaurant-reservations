@@ -2,7 +2,7 @@ package by.vsu.controller;
 
 import by.vsu.model.User;
 import by.vsu.service.UserService;
-import by.vsu.service.exception.UserNotFoundException;
+import by.vsu.service.exception.NotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -102,7 +102,7 @@ public class UserControllerTest {
 
     @Test
     public void updateUserNotFoundTest() throws Exception {
-        when(userService.save(any(User.class))).thenThrow(UserNotFoundException.class);
+        when(userService.save(any(User.class))).thenThrow(NotFoundException.class);
 
         mockMvc.perform(put("/users")
                 .content(new ObjectMapper().writeValueAsString(user))

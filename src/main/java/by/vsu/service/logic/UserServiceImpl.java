@@ -3,8 +3,7 @@ package by.vsu.service.logic;
 import by.vsu.dao.UserDao;
 import by.vsu.model.User;
 import by.vsu.service.UserService;
-import by.vsu.service.exception.UserNotFoundException;
-import org.apache.ibatis.javassist.NotFoundException;
+import by.vsu.service.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,7 @@ public class UserServiceImpl implements UserService {
         if (user.getId() != null) {
             User temp = userDao.findById(user.getId());
             if (temp == null) {
-                throw new UserNotFoundException("there is not user with id = " + user.getId());
+                throw new NotFoundException("there is not user with id = " + user.getId());
             }
             userDao.update(user);
         } else {

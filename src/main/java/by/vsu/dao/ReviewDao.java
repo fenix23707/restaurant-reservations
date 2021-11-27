@@ -29,9 +29,12 @@ public interface ReviewDao {
 
     @Select("SELECT id, rate, review, date, user_id, restaurant_id " +
             "FROM reviews " +
-            "WHERE user_id = #{userId}")
+            "WHERE user_id = #{userId} " +
+            "LIMIT #{size} OFFSET #{skip} ")
     @ResultMap("reviewResultMap")
-    Review findByUserId(@Param("userId") Integer userId);
+    List<Review> findByUserId(@Param("userId") Integer userId,
+                              @Param("size") int size,
+                              @Param("skip") int skip);
 
     @Insert("INSERT INTO reviews (rate, review, date, user_id, restaurant_id) " +
             "VALUES(#{rate}, #{text}, #{date}, #{user.id}, #{restaurant.id}) ")

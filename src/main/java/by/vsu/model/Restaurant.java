@@ -18,6 +18,10 @@ public class Restaurant {
 
     public Restaurant() {}
 
+    public Restaurant(Integer id) {
+        this.id = id;
+    }
+
     public Restaurant(String name, String avatar, String address, User user) {
         this.name = name;
         this.avatar = avatar;

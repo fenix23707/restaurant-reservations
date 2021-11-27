@@ -24,6 +24,10 @@ public class Review {
 
     public Review() {    }
 
+    public Review(Integer id) {
+        this.id = id;
+    }
+
     public Review(int rate, String text, Date date, User user, Restaurant restaurant) {
         this.rate = rate;
         this.text = text;

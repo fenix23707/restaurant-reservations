@@ -65,10 +65,10 @@ public class ReviewDaoTest {
     @Test
     public void findByUserIdTest() {
         Integer userId = 6;
-        Review review = reviewDao.findByUserId(userId);
+        List<Review> reviews = reviewDao.findByUserId(userId, REVIEWS_SIZE, 0);
 
-        assertTrue(fieldsNotNull(review));
-        assertEquals(userId, review.getUser().getId());
+        assertTrue(reviews.stream().allMatch(review -> fieldsNotNull(review)));
+        assertTrue(reviews.stream().allMatch(review -> review.getUser().getId() == userId));
     }
 
     @Test

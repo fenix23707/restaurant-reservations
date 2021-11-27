@@ -58,4 +58,14 @@ public class TestConfig {
         user.setId(1);
         return new Restaurant("name", "avatar", "address", user);
     }
+
+    @Bean
+    public List<Restaurant> restaurants() {
+        return Arrays.asList(
+                new Restaurant(1, "name 1", "avatar 1", "address 1", new User(1)),
+                new Restaurant(2, "asgasfgasd", "avatar 1", "address 1", new User(1)),
+                new Restaurant(3, "gdsddddddddddddddd", "avatar 1", "gdsgdrererr", new User(1)),
+                new Restaurant(4, "nanangan", "avatar 1", "addrrr", new User(1))
+        );
+    }
 }

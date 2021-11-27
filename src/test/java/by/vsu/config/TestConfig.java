@@ -3,16 +3,17 @@ package by.vsu.config;
 import by.vsu.model.Restaurant;
 import by.vsu.model.Review;
 import by.vsu.model.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
-import org.springframework.test.context.ContextConfiguration;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
-@Configuration()
-@ContextConfiguration(classes = AppConfig.class)
+@Configuration
 public class TestConfig {
     @Bean
     @Scope("prototype")
@@ -24,5 +25,25 @@ public class TestConfig {
         restaurant.setId(1);
 
         return new Review(10, "test", new Date(), user, restaurant);
+    }
+
+    @Bean
+    public List<Review> reviews() {
+        return Arrays.asList(
+                new Review(1, 4, "text 1", new Date(), new User(1), new Restaurant(4)),
+                new Review(2, 10, "text 2", new Date(), new User(1), new Restaurant(3)),
+                new Review(3, 8, "text 2", new Date(), new User(1), new Restaurant(2)),
+                new Review(4, 7, "text 2", new Date(), new User(1), new Restaurant(1)),
+                new Review(5, 7, "text 2", new Date(), new User(4), new Restaurant(1)),
+                new Review(6, 7, "text 2", new Date(), new User(4), new Restaurant(1))
+        );
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        mapper.setDateFormat(dateFormat);
+        return mapper;
     }
 }

@@ -4,7 +4,6 @@ import by.vsu.config.TestConfig;
 import by.vsu.dao.ReviewDao;
 import by.vsu.model.Restaurant;
 import by.vsu.model.Review;
-import by.vsu.model.User;
 import by.vsu.service.exception.NotAllowedChangeException;
 import by.vsu.service.exception.NotFoundException;
 import org.junit.Before;
@@ -14,13 +13,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,22 +38,13 @@ public class ReviewServiceImplTest implements ApplicationContextAware {
 
     private ApplicationContext context;
 
+    @Autowired
+    @Qualifier("reviews")
     private List<Review> reviews;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.context = applicationContext;
-    }
-
-    public ReviewServiceImplTest() {
-        reviews = Arrays.asList(
-                new Review(1, 4, "text 1", new Date(), new User(1), new Restaurant(4)),
-                new Review(2, 10, "text 2", new Date(), new User(1), new Restaurant(3)),
-                new Review(3, 8, "text 2", new Date(), new User(1), new Restaurant(2)),
-                new Review(4, 7, "text 2", new Date(), new User(1), new Restaurant(1)),
-                new Review(5, 7, "text 2", new Date(), new User(4), new Restaurant(1)),
-                new Review(6, 7, "text 2", new Date(), new User(4), new Restaurant(1))
-        );
     }
 
     @Before
@@ -85,18 +75,18 @@ public class ReviewServiceImplTest implements ApplicationContextAware {
 
     @Test
     public void getReviewsByRestaurantIdPageSizePageNumTest() {
-        Integer id = 1;
+        Integer restaurantId = 1;
         int pageSize = 1;
         int pageNum = 1;
         List<Review> reviewsByRestaurantId = reviews.stream()
-                .filter(review -> review.getRestaurant().getId() == id)
+                .filter(review -> review.getRestaurant().getId() == restaurantId)
                 .collect(Collectors.toList());
         List<Review> expected = reviewsByRestaurantId.subList(pageSize * pageNum, pageSize * (pageNum + 1));
 
         when(reviewDao.findByRestaurantId(anyInt(), anyInt(), anyInt()))
                 .thenReturn(expected);
 
-        List<Review> actual = reviewService.getReviewsByRestaurantId(id, pageSize, pageNum);
+        List<Review> actual = reviewService.getReviewsByRestaurantId(restaurantId, pageSize, pageNum);
         assertEquals(expected, actual);
     }
 

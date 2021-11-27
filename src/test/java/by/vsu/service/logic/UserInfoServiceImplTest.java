@@ -1,6 +1,5 @@
 package by.vsu.service.logic;
 
-import by.vsu.dao.UserDao;
 import by.vsu.dao.UserInfoDao;
 import by.vsu.model.User;
 import by.vsu.model.UserInfo;
@@ -15,8 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserInfoServiceImplTest {

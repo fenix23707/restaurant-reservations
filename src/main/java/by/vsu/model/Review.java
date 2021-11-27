@@ -13,28 +13,32 @@ public class Review {
     private int rate;
 
     /** Comment that leave user. */
-    private String review;
+    private String text;
 
     private Date date;
 
     /** User who left this review. */
     private User user;
 
+    private Restaurant restaurant;
+
     public Review() {    }
 
-    public Review(int rate, String review, Date date, User user) {
+    public Review(int rate, String text, Date date, User user, Restaurant restaurant) {
         this.rate = rate;
-        this.review = review;
+        this.text = text;
         this.date = date;
         this.user = user;
+        this.restaurant = restaurant;
     }
 
-    public Review(Integer id, int rate, String review, Date date, User user) {
+    public Review(Integer id, int rate, String text, Date date, User user, Restaurant restaurant) {
         this.id = id;
         this.rate = rate;
-        this.review = review;
+        this.text = text;
         this.date = date;
         this.user = user;
+        this.restaurant = restaurant;
     }
 
     public Integer getId() {
@@ -53,12 +57,12 @@ public class Review {
         this.rate = rate;
     }
 
-    public String getReview() {
-        return review;
+    public String getText() {
+        return text;
     }
 
-    public void setReview(String review) {
-        this.review = review;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public Date getDate() {
@@ -77,17 +81,25 @@ public class Review {
         this.user = user;
     }
 
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Review review1 = (Review) o;
-        return rate == review1.rate && Objects.equals(id, review1.id) && Objects.equals(review, review1.review) && Objects.equals(date, review1.date) && Objects.equals(user, review1.user);
+        return rate == review1.rate && Objects.equals(id, review1.id) && Objects.equals(text, review1.text) && Objects.equals(date, review1.date) && Objects.equals(user, review1.user) && Objects.equals(restaurant, review1.restaurant);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rate, review, date, user);
+        return Objects.hash(id, rate, text, date, user, restaurant);
     }
 
     @Override
@@ -95,9 +107,10 @@ public class Review {
         return "Review{" +
                 "id=" + id +
                 ", rate=" + rate +
-                ", review='" + review + '\'' +
+                ", review='" + text + '\'' +
                 ", date=" + date +
                 ", user=" + user +
+                ", restaurant=" + restaurant +
                 '}';
     }
 }

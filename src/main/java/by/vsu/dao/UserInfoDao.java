@@ -1,6 +1,5 @@
 package by.vsu.dao;
 
-import by.vsu.model.User;
 import by.vsu.model.UserInfo;
 import org.apache.ibatis.annotations.*;
 

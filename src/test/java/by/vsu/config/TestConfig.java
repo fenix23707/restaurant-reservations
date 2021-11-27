@@ -4,8 +4,10 @@ import by.vsu.model.Restaurant;
 import by.vsu.model.Review;
 import by.vsu.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Scope;
 
 import java.text.SimpleDateFormat;
@@ -14,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 @Configuration
+@MapperScan("by.vsu.dao")
+@ImportResource("classpath:beans.xml")
 public class TestConfig {
     @Bean
     @Scope("prototype")
@@ -45,5 +49,13 @@ public class TestConfig {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         mapper.setDateFormat(dateFormat);
         return mapper;
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Restaurant restaurant() {
+        User user = new User();
+        user.setId(1);
+        return new Restaurant("name", "avatar", "address", user);
     }
 }

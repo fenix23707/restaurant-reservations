@@ -20,6 +20,8 @@
                      javaType="by.vsu.model.User$Role"/>
         <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
                      javaType="by.vsu.model.User$Status"/>
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
+                     javaType="by.vsu.model.TableReservation$Status"/>
     </typeHandlers>
     
     <mappers>
@@ -29,5 +31,6 @@
         <mapper resource="mappers/ReviewMapper.xml"/>
         <mapper resource="mappers/SchemeMapper.xml"/>
         <mapper resource="mappers/TableMapper.xml"/>
+        <mapper resource="mappers/TableReservationMapper.xml"/>
     </mappers>
 </configuration>

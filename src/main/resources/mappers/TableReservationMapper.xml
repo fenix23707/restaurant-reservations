@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="by.vsu.dao.TableReservationDao">
+    <resultMap id="tableReservationResultMap" type="TableReservation" autoMapping="true">
+        <result property="begin" column="datetime_begin"/>
+        <result property="end" column="datetime_end"/>
+        <result property="status" column="status" javaType="by.vsu.model.TableReservation$Status"/>
+        <result property="table.id" column="table_id"/>
+        <result property="user.id" column="user_id"/>
+    </resultMap>
+</mapper>

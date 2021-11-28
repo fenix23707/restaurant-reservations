@@ -105,4 +105,16 @@ public class TestConfig {
                 new Table(9, 4, 50, 50, new Position(400, 440), new Scheme(2))
         );
     }
+
+    @Bean
+    @Scope("prototype")
+    public TableReservation tableReservation() {
+        return new TableReservation(
+                new Date(),
+                new Date(new Date().getTime() + 60 * 60 * 1000),
+                2,
+                TableReservation.Status.COMPLETED,
+                new Table(1),
+                new User(1));
+    }
 }

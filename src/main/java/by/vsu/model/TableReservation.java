@@ -1,6 +1,7 @@
 package by.vsu.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Store information about table reservations.
@@ -102,5 +103,31 @@ public class TableReservation {
 
     public enum Status {
         BOOKED, COMPLETED, CANCELLED
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TableReservation that = (TableReservation) o;
+        return capacity == that.capacity && Objects.equals(id, that.id) && Objects.equals(begin, that.begin) && Objects.equals(end, that.end) && status == that.status && Objects.equals(table, that.table) && Objects.equals(user, that.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, begin, end, capacity, status, table, user);
+    }
+
+    @Override
+    public String toString() {
+        return "TableReservation{" +
+                "id=" + id +
+                ", begin=" + begin +
+                ", end=" + end +
+                ", capacity=" + capacity +
+                ", status=" + status +
+                ", table=" + table +
+                ", user=" + user +
+                '}';
     }
 }

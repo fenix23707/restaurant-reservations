@@ -1,10 +1,8 @@
 package by.vsu.config;
 
-import by.vsu.model.Restaurant;
-import by.vsu.model.Review;
-import by.vsu.model.Scheme;
-import by.vsu.model.User;
+import by.vsu.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.geometry.Pos;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -85,5 +83,12 @@ public class TestConfig {
                 new Scheme(3, 250, 100, new Restaurant(3)),
                 new Scheme(4, 50, 50, new Restaurant(4))
         );
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Table table() {
+        Position position = new Position(20, 30);
+        return new Table(4,60, 40, position, new Scheme(1));
     }
 }

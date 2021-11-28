@@ -12,6 +12,7 @@
         <typeAlias type="by.vsu.model.Table" alias="Table"/>
         <typeAlias type="by.vsu.model.Scheme" alias="Scheme"/>
         <typeAlias type="by.vsu.model.TableReservation" alias="TableReservation"/>
+        <typeAlias type="by.vsu.model.Position" alias="Position"/>
     </typeAliases>
 
     <typeHandlers>
@@ -27,5 +28,6 @@
         <mapper resource="mappers/UserInfoMapper.xml"/>
         <mapper resource="mappers/ReviewMapper.xml"/>
         <mapper resource="mappers/SchemeMapper.xml"/>
+        <mapper resource="mappers/TableMapper.xml"/>
     </mappers>
 </configuration>

@@ -141,6 +141,7 @@ INSERT INTO tables (capacity, width, height, x, y, scheme_id) VALUES
 (4, 2, 2 , 10, 10, 1),
 (4, 2, 2 , 10, 20, 1),
 (2, 1, 2 , 0, 0, 2),
+(2, 1, 2 , 10, 10, 2),
 (2, 1, 2 , 10, 10, 2);
 
 INSERT INTO book_tables (datetime_begin, datetime_end, capacity, status, table_id, user_id) VALUES 

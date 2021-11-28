@@ -1,6 +1,5 @@
 package by.vsu.model;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,22 +14,25 @@ public class Scheme {
     /** A height of a restaurant in meters. */
     private int height;
 
-    /** All tables associated with this scheme. */
-    private List<Table> tables;
+    private Restaurant restaurant;
 
     public Scheme() {}
 
-    public Scheme(int width, int height, List<Table> tables) {
-        this.width = width;
-        this.height = height;
-        this.tables = tables;
+    public Scheme(Integer id) {
+        this.id = id;
     }
 
-    public Scheme(Integer id, int width, int height, List<Table> tables) {
+    public Scheme(int width, int height, Restaurant restaurant) {
+        this.width = width;
+        this.height = height;
+        this.restaurant = restaurant;
+    }
+
+    public Scheme(Integer id, int width, int height, Restaurant restaurant) {
         this.id = id;
         this.width = width;
         this.height = height;
-        this.tables = tables;
+        this.restaurant = restaurant;
     }
 
     public Integer getId() {
@@ -57,12 +59,12 @@ public class Scheme {
         this.height = height;
     }
 
-    public List<Table> getTables() {
-        return tables;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setTables(List<Table> tables) {
-        this.tables = tables;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -70,12 +72,12 @@ public class Scheme {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Scheme scheme = (Scheme) o;
-        return width == scheme.width && height == scheme.height && Objects.equals(id, scheme.id) && Objects.equals(tables, scheme.tables);
+        return width == scheme.width && height == scheme.height && Objects.equals(id, scheme.id) && Objects.equals(restaurant, scheme.restaurant);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, width, height, tables);
+        return Objects.hash(id, width, height, restaurant);
     }
 
     @Override
@@ -84,7 +86,7 @@ public class Scheme {
                 "id=" + id +
                 ", width=" + width +
                 ", height=" + height +
-                ", tables=" + tables +
+                ", restaurant=" + restaurant +
                 '}';
     }
 }

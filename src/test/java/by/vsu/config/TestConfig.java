@@ -2,6 +2,7 @@ package by.vsu.config;
 
 import by.vsu.model.Restaurant;
 import by.vsu.model.Review;
+import by.vsu.model.Scheme;
 import by.vsu.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mybatis.spring.annotation.MapperScan;
@@ -67,5 +68,12 @@ public class TestConfig {
                 new Restaurant(3, "gdsddddddddddddddd", "avatar 1", "gdsgdrererr", new User(1)),
                 new Restaurant(4, "nanangan", "avatar 1", "addrrr", new User(1))
         );
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Scheme scheme() {
+        Restaurant restaurant = new Restaurant(1);
+        return new Scheme(100, 150, restaurant);
     }
 }

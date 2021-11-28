@@ -41,8 +41,8 @@ CREATE TABLE schemes
 (
 	PRIMARY KEY(id),	
 	id 				serial,	
-	width 			smallint 		NOT NULL 	CHECK(width BETWEEN 1 and 10000),
-	height 			smallint 		NOT NULL 	CHECK(height BETWEEN 1 and 10000),
+	width 			int 		NOT NULL 	CHECK(width BETWEEN 1 and 10000),
+	height 			int 		NOT NULL 	CHECK(height BETWEEN 1 and 10000),
 	restaurant_id 	int
 );
 
@@ -53,8 +53,8 @@ CREATE TABLE tables
 	capacity  	smallint 	NOT NULL  	CHECK(capacity BETWEEN 1 and 5000),
 	width  		smallint 	NOT NULL  	CHECK(width BETWEEN 1 and 10000),
 	height 		smallint 	NOT NULL  	CHECK(height BETWEEN 1 and 10000),
-	x  			smallint 	NOT NULL  	CHECK(x BETWEEN 0 and 10000),
-	y  			smallint 	NOT NULL 	CHECK(y BETWEEN 0 and 10000),
+	x  			int 	NOT NULL  	CHECK(x BETWEEN 0 and 10000),
+	y  			int 	NOT NULL 	CHECK(y BETWEEN 0 and 10000),
 	scheme_id 	int
 );
 
@@ -133,6 +133,7 @@ INSERT INTO schemes (width, height, restaurant_id) VALUES
 (200, 100, 2),
 (50, 100, 3),
 (100, 400, 4),
+(100, 600, 5),
 (100, 600, 5);
 
 INSERT INTO tables (capacity, width, height, x, y, scheme_id) VALUES 

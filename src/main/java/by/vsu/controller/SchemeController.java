@@ -27,18 +27,18 @@ public class SchemeController {
     }
 
     @GetMapping("/widthheight")
-    public List<Scheme> allByWidthHeight(@RequestParam("width") int width,
-                                         @RequestParam("compWidth")Comparison compWidth,
-                                         @RequestParam("height") int height,
-                                         @RequestParam("compHeight")Comparison compHeight,
+    public List<Scheme> allByWidthHeight(@RequestParam(value = "width", defaultValue = "100") int width,
+                                         @RequestParam(value = "compWidth", defaultValue = "EQ")Comparison compWidth,
+                                         @RequestParam(value = "height", defaultValue = "100") int height,
+                                         @RequestParam(value = "compHeight", defaultValue = "EQ")Comparison compHeight,
                                          @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
                                          @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         return schemeService.getAllByWidthHeight(width, compWidth,height , compHeight, pageSize, pageNum);
     }
 
     @GetMapping("/square")
-    public List<Scheme> allBySquare(@RequestParam("square") int square,
-                                         @RequestParam("comparison")Comparison comparison,
+    public List<Scheme> allBySquare(@RequestParam(value = "square",defaultValue = "1000") int square,
+                                         @RequestParam(value = "comparison", defaultValue = "EQ")Comparison comparison,
                                          @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
                                          @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         return schemeService.getAllBySquare(square, comparison, pageSize, pageNum);

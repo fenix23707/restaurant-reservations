@@ -3,7 +3,6 @@ package by.vsu.dao;
 import by.vsu.config.TestConfig;
 import by.vsu.model.Comparison;
 import by.vsu.model.Position;
-import by.vsu.model.Scheme;
 import by.vsu.model.Table;
 import org.junit.Test;
 import org.junit.runner.RunWith;

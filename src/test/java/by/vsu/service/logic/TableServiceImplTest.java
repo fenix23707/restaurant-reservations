@@ -3,7 +3,6 @@ package by.vsu.service.logic;
 import by.vsu.config.TestConfig;
 import by.vsu.dao.TableDao;
 import by.vsu.model.Table;
-import by.vsu.service.TableService;
 import by.vsu.service.exception.NotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)

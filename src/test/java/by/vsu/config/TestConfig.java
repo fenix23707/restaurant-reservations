@@ -2,7 +2,6 @@ package by.vsu.config;
 
 import by.vsu.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.geometry.Pos;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -89,6 +88,21 @@ public class TestConfig {
     @Scope("prototype")
     public Table table() {
         Position position = new Position(20, 30);
-        return new Table(4,60, 40, position, new Scheme(1));
+        return new Table(4, 60, 40, position, new Scheme(1));
+    }
+
+    @Bean
+    public List<Table> tables() {
+        return Arrays.asList(
+                new Table(1, 4, 100, 50, new Position(40, 40), new Scheme(1)),
+                new Table(2, 4, 30, 50, new Position(40, 180), new Scheme(1)),
+                new Table(3, 8, 100, 30, new Position(40, 40), new Scheme(1)),
+                new Table(4, 6, 80, 80, new Position(40, 40), new Scheme(1)),
+                new Table(5, 12, 20, 50, new Position(340, 40), new Scheme(1)),
+                new Table(6, 2, 200, 150, new Position(80, 140), new Scheme(2)),
+                new Table(7, 4, 120, 50, new Position(140, 40), new Scheme(3)),
+                new Table(8, 9, 40, 50, new Position(40, 240), new Scheme(4)),
+                new Table(9, 4, 50, 50, new Position(400, 440), new Scheme(2))
+        );
     }
 }

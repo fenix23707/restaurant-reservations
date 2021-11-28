@@ -81,8 +81,8 @@ public class TestConfig {
     public List<Scheme> schemes() {
         return Arrays.asList(
                 new Scheme(1, 150, 50, new Restaurant(1)),
-                new Scheme(2, 150, 150, new Restaurant(2)),
-                new Scheme(3, 250, 150, new Restaurant(3)),
+                new Scheme(2, 150, 100, new Restaurant(2)),
+                new Scheme(3, 250, 100, new Restaurant(3)),
                 new Scheme(4, 50, 50, new Restaurant(4))
         );
     }

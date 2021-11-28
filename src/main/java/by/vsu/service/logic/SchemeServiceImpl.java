@@ -26,7 +26,7 @@ public class SchemeServiceImpl implements SchemeService {
 
     @Override
     public List<Scheme> getAllByWidthHeight(int width, Comparison compWidth, int height, Comparison compHeight, int pageSize, int pageNum) {
-        return schemeDao.findAllByWidthHeight(width, height, compWidth, compWidth, pageSize, pageSize * pageNum);
+        return schemeDao.findAllByWidthHeight(width, height, compWidth, compHeight, pageSize, pageSize * pageNum);
     }
 
     @Override

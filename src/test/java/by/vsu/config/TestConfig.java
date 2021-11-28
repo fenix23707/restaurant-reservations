@@ -76,4 +76,14 @@ public class TestConfig {
         Restaurant restaurant = new Restaurant(1);
         return new Scheme(100, 150, restaurant);
     }
+
+    @Bean
+    public List<Scheme> schemes() {
+        return Arrays.asList(
+                new Scheme(1, 150, 50, new Restaurant(1)),
+                new Scheme(2, 150, 150, new Restaurant(2)),
+                new Scheme(3, 250, 150, new Restaurant(3)),
+                new Scheme(4, 50, 50, new Restaurant(4))
+        );
+    }
 }

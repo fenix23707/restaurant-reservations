@@ -50,6 +50,11 @@ public class TestConfig {
     }
 
     @Bean
+    public SimpleDateFormat simpleDateFormat() {
+        return  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+    }
+
+    @Bean
     @Scope("prototype")
     public Restaurant restaurant() {
         User user = new User();
@@ -116,5 +121,19 @@ public class TestConfig {
                 TableReservation.Status.COMPLETED,
                 new Table(1),
                 new User(1));
+    }
+
+    @Bean
+    public List<TableReservation> tableReservations() {
+        Date begin = new Date();
+        Date end = new Date(begin.getTime() + 1000 * 60 * 60 * 24);
+        return Arrays.asList(
+          new TableReservation(1, begin, end, 4, TableReservation.Status.COMPLETED, new Table(1), new User(1)),
+          new TableReservation(2, begin, end, 4, TableReservation.Status.BOOKED, new Table(2), new User(1)),
+          new TableReservation(3, begin, end, 4, TableReservation.Status.BOOKED, new Table(3), new User(1)),
+          new TableReservation(4, begin, end, 3, TableReservation.Status.BOOKED, new Table(1), new User(3)),
+          new TableReservation(5, begin, end, 4, TableReservation.Status.COMPLETED, new Table(1), new User(1)),
+          new TableReservation(6, begin, end, 4, TableReservation.Status.COMPLETED, new Table(1), new User(1))
+        );
     }
 }

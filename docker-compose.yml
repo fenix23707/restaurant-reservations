@@ -1,0 +1,27 @@
+version: '2.2'
+services:
+  app:
+    image: 'restaurant-reservations:latest'
+    restart: always
+    ports:
+      - "80:80"
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/restaurant_reservations
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=vlad
+  db:
+    image: 'postgres:13.1-alpine'
+    restart: always
+    ports:
+      - "5000:5432"
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=vlad
+    volumes:
+    - ./sql:/docker-entrypoint-initdb.d

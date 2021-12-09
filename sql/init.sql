@@ -1,10 +1,12 @@
-DROP TABLE reviews;
-DROP TABLE book_tables;
-DROP TABLE tables;
-DROP TABLE schemes;
-DROP TABLE restaurants;
-DROP TABLE user_info;
-DROP TABLE users;
+CREATE DATABASE restaurant_reservations;
+\c restaurant_reservations;
+-- DROP TABLE reviews;
+-- DROP TABLE book_tables;
+-- DROP TABLE tables;
+-- DROP TABLE schemes;
+-- DROP TABLE restaurants;
+-- DROP TABLE user_info;
+-- DROP TABLE users;
 
 CREATE TABLE users(
     PRIMARY KEY(id),

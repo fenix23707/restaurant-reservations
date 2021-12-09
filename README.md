@@ -14,6 +14,6 @@
     * docker-compose stop
 ***
 # Swagger:
-#### ghttp://localhost/swagger-ui.html
+#### http://localhost/swagger-ui.html
 
     

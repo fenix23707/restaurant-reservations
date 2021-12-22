@@ -15,7 +15,7 @@ public class Review {
     /** Comment that leave user. */
     private String text;
 
-    private Date date;
+    private Date date = new Date();
 
     /** User who left this review. */
     private User user;
